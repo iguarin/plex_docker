@@ -33,7 +33,32 @@ Simply put, a container connected to a Macvlan Network has its own MAC address, 
 
 ```docker network create -d macvlan --subnet=192.168.0.0/24  --gateway=192.168.0.1 --ip-range 192.168.0.240/28 -o parent=eth0 pub_net```
 
-1. 
-2. 
+1. "-d" specifies the driver
+2. Gateway in this case is my router's IP.
+3. Specifying the IP range is imporant as you don't want the IP conflict. In your router, you can specify a range of IPs not to be included in the DHCP range. In this case, I chose IPs 192.168.0.240-254. 
+4. "eth0" is the interface connected to the internet.
+5. "pub_net" is the name of the network.
+
+## Creating the Plex Container ##
+
+Before we create the container, we have to create the folders that are required for plex: *config, media and transcode". (transcode is optional).
+
+Go to your home and run the following commands:
+```mkdir plex```
+```cd plex```
+```mkdir config```
+```mkdir media```
+*Note that if you are hosting your media like me on a removable drive, you can skip this command*
+```mkdir transcode```
+
+
+
+```docker run -d --restart=always --name plex --network=pub_net --ip=192.168.0.12 -e TZ="America/Chicago" -e VERSION=latest -e PUID=1000 -e PGID=1000 -h plex -v ~/plex-config:/config -v /mnt/torrents/completed:/media -v ~/plex-transcode:/transcode plexinc/pms-docker```
+
+1. "-restary=always" allows the container to start after a reboot.
+2. "e VERSION=latest" gets the latest version. "-e PUID=1000 -e PGID=1000" are the IDs of the user you want to run the Plex container.
+3. 
+
+
 
 
