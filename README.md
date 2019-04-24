@@ -43,7 +43,7 @@ Simply put, a container connected to a Macvlan Network has its own MAC address, 
 
 Before we create the container, we have to create the folders that are required for plex: *config, media and transcode". (transcode is optional).
 
-Go to your home and run the following commands:
+We go to the user's home and run the following commands:
 ```cd ~```
 ```mkdir plex``` <br/>
 ```cd plex```<br/>
@@ -53,14 +53,25 @@ Go to your home and run the following commands:
 
 Next, we create and run the plex container.
 
-```docker run -d --restart=always --name plex --network=pub_net --ip=192.168.0.12 -e TZ="America/Chicago" -e VERSION=latest -e PUID=1000 -e PGID=1000 -h plex  -v /plex/media:/media jaymoulin/plex```
+```docker run -d --restart=always --name plex --network=pub_net --ip=192.168.0.240 -e TZ="America/Chicago" -e VERSION=latest -e PUID=1000 -e PGID=1000 -h plex  -v /plex/media:/media jaymoulin/plex```
 
 (Note that the image we are using is made for the Raspbery Pi architeture, but there are more images for other architectures.)
 
-1. "-restary=always" allows the container to start after a reboot.
-2. "e VERSION=latest" gets the latest version. "-e PUID=1000 -e PGID=1000" are the IDs of the user you want to run the Plex container. ( Run ```id``` on the terminal to get these values).
-3. "-h" specifies the hostname.
-4. "-v" command maps the volumes in the local file system to the container's. 
+1. "-restart=always" allows the container to start after a reboot. 
+2. Note that we gave the container an IP of 192.168.0.240 because that is the beginning of the range we specified earlier when creating the network. 
+3. "e VERSION=latest" gets the latest version. "-e PUID=1000 -e PGID=1000" are the IDs of the user you want to run the Plex container. ( Run ```id``` on the terminal to get these values).
+4. "-h" specifies the hostname.
+5. "-v" command maps the volumes in the local file system to the container's. 
+
+Source: https://hub.docker.com/r/jaymoulin/plex/
+
+## Configuring the Plex Server ##
+Finally, you can configure your Plex server by going to http://192.168.0.240:32400/manage. 
+
+## Next Steps ##
+After the initial configuration, you have to enable port forwarding in your router to map the local port to the public port. For simplicity purposes we can set it to 32400:32400. 
+
+Next, we go the Plex web interface/app -> Settings -> Remote Access (Left-hand side) -> Input the ports.
 
 
 
