@@ -44,11 +44,11 @@ Simply put, a container connected to a Macvlan Network has its own MAC address, 
 Before we create the container, we have to create the folders that are required for plex: *config, media and transcode". (transcode is optional).
 
 Go to your home and run the following commands:
-```mkdir plex``` \n
-```cd plex```
-```mkdir config```
-```mkdir media```
-*Note that if you are hosting your media like me on a removable drive, you can skip this command*
+```mkdir plex``` <br/>
+```cd plex```<br/>
+```mkdir config```<br/>
+```mkdir media```<br/>
+*Note that if you are hosting your media like me on a removable drive, you can skip this command*<br/>
 ```mkdir transcode```
 
 
