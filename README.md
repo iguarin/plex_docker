@@ -2,4 +2,15 @@
 Do you want to remotely access your Plex Server but since you are running both a VPN/ Torrent client and a Plex server on the same box it's kind of difficult to do? This tutorial will demonstrate how to overcome the said issue with Docker's Macvlan. 
 
 
-** Problems with Running Plex and Torrent Server (with VPN) together on the same box ** : Plex default to the interface it finds first. If you are connected to a VPN server, depending on the VPN provider (some does not support port forwarding), you may not be able to route the traffic to or from your Plex Server. 
+**Problems with Running Plex and Torrent Server (with VPN) together on the same box** : Plex default to the interface it finds first. If you are connected to a VPN server, depending on the VPN provider (some does not support port forwarding), you may not be able to route the traffic to or from your Plex Server. 
+
+Without any further interruption, let us start.
+
+# Installing Docker #:
+
+```curl -fsSL get.docker.com -o get-docker.sh && sh get-docker.sh```
+
+This command will fetch the docker installation script and execute it.
+
+Source: https://medium.freecodecamp.org/the-easy-way-to-set-up-docker-on-a-raspberry-pi-7d24ced073ef
+
