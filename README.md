@@ -73,7 +73,7 @@ After the initial configuration, you have to enable port forwarding in your rout
 
 Next, we go the Plex web interface/app -> Settings -> Remote Access (Left-hand side) -> Input the ports.
 
-
+*I recommend manually opening the ports vs. UPNP for better security practices.*
 
 
 
