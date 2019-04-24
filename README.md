@@ -44,20 +44,25 @@ Simply put, a container connected to a Macvlan Network has its own MAC address, 
 Before we create the container, we have to create the folders that are required for plex: *config, media and transcode". (transcode is optional).
 
 Go to your home and run the following commands:
+```cd ~```
 ```mkdir plex``` <br/>
 ```cd plex```<br/>
-```mkdir config```<br/>
 ```mkdir media```<br/>
-*Note that if you are hosting your media like me on a removable drive, you can skip this command*<br/>
-```mkdir transcode```
+*Note that if you are hosting your media like me on a removable drive, you can skip the above command*<br/>
 
 
+Next, we create and run the plex container.
 
-```docker run -d --restart=always --name plex --network=pub_net --ip=192.168.0.12 -e TZ="America/Chicago" -e VERSION=latest -e PUID=1000 -e PGID=1000 -h plex -v ~/plex-config:/config -v /mnt/torrents/completed:/media -v ~/plex-transcode:/transcode plexinc/pms-docker```
+```docker run -d --restart=always --name plex --network=pub_net --ip=192.168.0.12 -e TZ="America/Chicago" -e VERSION=latest -e PUID=1000 -e PGID=1000 -h plex  -v /plex/media:/media jaymoulin/plex```
+
+(Note that the image we are using is made for the Raspbery Pi architeture, but there are more images for other architectures.)
 
 1. "-restary=always" allows the container to start after a reboot.
-2. "e VERSION=latest" gets the latest version. "-e PUID=1000 -e PGID=1000" are the IDs of the user you want to run the Plex container.
-3. 
+2. "e VERSION=latest" gets the latest version. "-e PUID=1000 -e PGID=1000" are the IDs of the user you want to run the Plex container. ( Run ```id``` on the terminal to get these values).
+3. "-h" specifies the hostname.
+4. "-v" command maps the volumes in the local file system to the container's. 
+
+
 
 
 
