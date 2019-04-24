@@ -6,7 +6,7 @@ Do you want to remotely access your Plex Server but since you are running both a
 
 Without any further interruption, let us start.
 
-# Installing Docker #:
+# Installing Docker :
 
 ```curl -fsSL get.docker.com -o get-docker.sh && sh get-docker.sh```
 
